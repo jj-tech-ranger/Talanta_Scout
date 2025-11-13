@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Dashboard - Talanta Scout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/coachdashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🎯 Coach Portal</h2>
+                <div class="user-info">
+                    <div class="user-avatar">C</div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Coach User</span>
+                        <span class="user-tier" id="userTier">Silver Tier</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="basic">
+                    <span class="icon">🎯</span>
+                    <span>My Squad</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="bronze">
+                    <span class="icon">🔍</span>
+                    <span>Find Players</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">📊</span>
+                    <span>Performance Analytics</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">🏆</span>
+                    <span>Training Plans</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="gold">
+                    <span class="icon">📧</span>
+                    <span>Scout Network</span>
+                </a>
+                <a href="profile.html" class="nav-item" data-min-package="basic">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="../index.html" class="nav-item logout">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Coach Dashboard</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary" data-min-package="basic">🔔 Notifications</button>
+                    <button class="btn-primary" data-min-package="bronze">+ Add Player</button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card" data-min-package="basic">
+                    <div class="stat-icon">🎯</div>
+                    <div class="stat-info">
+                        <h3 id="squadSize">0</h3>
+                        <p>Squad Members</p>
+                    </div>
+                </div>
+                <div class="stat-card" data-min-package="bronze">
+                    <div class="stat-icon">👀</div>
+                    <div class="stat-info">
+                        <h3 id="scoutsViewing">0</h3>
+                        <p>Scouts Interested</p>
+                    </div>
+                </div>
+                <div class="stat-card" data-min-package="silver">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-info">
+                        <h3 id="trainingHours">0</h3>
+                        <p>Training Hours</p>
+                    </div>
+                </div>
+                <div class="stat-card" data-min-package="gold">
+                    <div class="stat-icon">🤝</div>
+                    <div class="stat-info">
+                        <h3 id="transfersMade">0</h3>
+                        <p>Successful Transfers</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feature Cards -->
+            <section class="feature-cards">
+                <div class="feature-card" data-min-package="basic">
+                    <h3>🎯 Squad Management</h3>
+                    <p>Manage your team roster, track player development, and organize training sessions.</p>
+                    <button class="btn-primary">View Squad</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="bronze">
+                    <h3>🔍 Player Discovery</h3>
+                    <p>Search and recruit new talent from our extensive database of players.</p>
+                    <button class="btn-primary">Find Players</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="silver">
+                    <h3>📊 Performance Analytics</h3>
+                    <p>Access detailed performance metrics, training analytics, and progress tracking.</p>
+                    <button class="btn-primary">View Analytics</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="gold">
+                    <h3>🤝 Scout Network</h3>
+                    <p>Connect with scouts and clubs to facilitate player transfers and opportunities.</p>
+                    <button class="btn-primary">View Network</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="platinum">
+                    <h3>🌟 Premium Tools</h3>
+                    <p>Access advanced coaching tools, video analysis, and priority support.</p>
+                    <button class="btn-primary">Explore Tools</button>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" data-min-package="basic">
+                        <span class="icon">🎯</span>
+                        <span>View Squad</span>
+                    </button>
+                    <button class="action-btn" data-min-package="bronze">
+                        <span class="icon">➕</span>
+                        <span>Add Player</span>
+                    </button>
+                    <button class="action-btn" data-min-package="silver">
+                        <span class="icon">🏆</span>
+                        <span>Schedule Training</span>
+                    </button>
+                    <button class="action-btn" data-min-package="gold">
+                        <span class="icon">✉️</span>
+                        <span>Contact Scout</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item" data-min-package="basic">
+                        <div class="activity-icon">🎯</div>
+                        <div class="activity-content">
+                            <p><strong>Squad update:</strong> Training session completed</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item" data-min-package="bronze">
+                        <div class="activity-icon">👀</div>
+                        <div class="activity-content">
+                            <p><strong>Scout viewed:</strong> Your player Peter Njoroge</p>
+                            <span class="activity-time">5 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item" data-min-package="silver">
+                        <div class="activity-icon">🏆</div>
+                        <div class="activity-content">
+                            <p><strong>Training completed:</strong> Advanced tactics session</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item" data-min-package="gold">
+                        <div class="activity-icon">✉️</div>
+                        <div class="activity-content">
+                            <p><strong>Message from:</strong> Scout Jane Wanjiru</p>
+                            <span class="activity-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
