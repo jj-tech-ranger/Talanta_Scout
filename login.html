@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - TalantaScout</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <div class="login-left">
+            <div class="login-branding">
+                <img src="assets/images/logo.png" alt="TalantaScout Logo" class="login-logo">
+                <h1>TalantaScout</h1>
+                <p>Connecting Kenya's Football Talent</p>
+            </div>
+            <div class="login-features">
+                <div class="feature-item">
+                    <i class="icon-check"></i>
+                    <span>Showcase Your Skills</span>
+                </div>
+                <div class="feature-item">
+                    <i class="icon-check"></i>
+                    <span>Connect with Scouts</span>
+                </div>
+                <div class="feature-item">
+                    <i class="icon-check"></i>
+                    <span>Track Your Progress</span>
+                </div>
+                <div class="feature-item">
+                    <i class="icon-check"></i>
+                    <span>Access Opportunities</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-right">
+            <div class="login-form-container">
+                <h2>Welcome Back</h2>
+                <p class="login-subtitle">Sign in to your account</p>
+                
+                <form id="loginForm" class="login-form">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    
+                    <div class="form-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="remember" id="remember">
+                            <span>Remember me</span>
+                        </label>
+                        <a href="#" class="forgot-password">Forgot password?</a>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                </form>
+                
+                <div class="divider">
+                    <span>or</span>
+                </div>
+                
+                <div class="social-login">
+                    <button class="btn btn-social btn-google">
+                        <img src="assets/images/google-icon.png" alt="Google">
+                        <span>Continue with Google</span>
+                    </button>
+                    <button class="btn btn-social btn-facebook">
+                        <img src="assets/images/facebook-icon.png" alt="Facebook">
+                        <span>Continue with Facebook</span>
+                    </button>
+                </div>
+                
+                <div class="signup-prompt">
+                    <p>Don't have an account? <a href="#register">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Handle login form submission
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simulate authentication
+            // In production, this would make an API call to verify credentials
+            console.log('Login attempt:', email);
+            
+            // Simulate role-based redirect
+            // This would normally come from the authentication API
+            const simulatedUserRole = determineRoleFromEmail(email);
+            const packageTier = getPackageTierFromURL() || 'bronze';
+            
+            // Store user data in localStorage (for demo purposes)
+            localStorage.setItem('userRole', simulatedUserRole);
+            localStorage.setItem('packageTier', packageTier);
+            localStorage.setItem('userEmail', email);
+            
+            // Redirect to appropriate dashboard
+            redirectToDashboard(simulatedUserRole);
+        });
+        
+        function determineRoleFromEmail(email) {
+            // Demo logic to determine role from email pattern
+            if (email.includes('player')) return 'player';
+            if (email.includes('scout')) return 'scout';
+            if (email.includes('coach')) return 'coach';
+            if (email.includes('admin')) return 'admin';
+            return 'player'; // default to player
+        }
+        
+        function getPackageTierFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('package');
+        }
+        
+        function redirectToDashboard(role) {
+            const dashboardPaths = {
+                'player': 'player/dashboard.html',
+                'scout': 'scout/dashboard.html',
+                'coach': 'coach/dashboard.html',
+                'admin': 'admin/dashboard.html'
+            };
+            
+            const path = dashboardPaths[role] || 'player/dashboard.html';
+            window.location.href = path;
+        }
+    </script>
+</body>
+</html>
