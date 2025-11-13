@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Dashboard - TalantaScout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>TalantaScout</h2>
+                <span class="package-badge current-tier">BRONZE</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="dashboard.html" class="active">⭐ Dashboard</a>
+                <a href="profile.html">👤 Profile</a>
+                <a href="training.html" data-min-package="bronze">🏋️ Training</a>
+                <a href="matches.html">⚽ Matches</a>
+                <a href="scout_connect.html" data-min-package="silver">🔍 Scout Connect</a>
+                <a href="achievements.html" data-min-package="gold">🏆 Achievements</a>
+                <a href="settings.html">⚙️ Settings</a>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Welcome Back, Player!</h1>
+                <button class="btn btn-primary" data-min-package="silver">Upgrade to Premium</button>
+            </header>
+            
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <h3>Profile Views</h3>
+                    <p class="stat-value">127</p>
+                    <span class="stat-change positive">+12%</span>
+                </div>
+                
+                <div class="stat-card" data-min-package="bronze">
+                    <h3>Video Views</h3>
+                    <p class="stat-value">523</p>
+                    <span class="stat-change positive">+28%</span>
+                </div>
+                
+                <div class="stat-card" data-min-package="silver">
+                    <h3>Scout Interests</h3>
+                    <p class="stat-value">8</p>
+                    <span class="stat-change positive">+3</span>
+                </div>
+                
+                <div class="stat-card" data-min-package="gold">
+                    <h3>Team Offers</h3>
+                    <p class="stat-value">2</p>
+                    <span class="stat-change neutral">New</span>
+                </div>
+            </section>
+            
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-btn">
+                        📸 Upload Photo
+                    </button>
+                    <button class="action-btn" data-min-package="bronze">
+                        🎥 Upload Video
+                    </button>
+                    <button class="action-btn" data-min-package="silver">
+                        📊 View Analytics
+                    </button>
+                    <button class="action-btn" data-min-package="gold">
+                        📧 Message Scouts
+                    </button>
+                </div>
+            </section>
+            
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <span>👀 Your profile was viewed by 5 scouts</span>
+                        <span class="time">2 hours ago</span>
+                    </div>
+                    <div class="activity-item" data-min-package="bronze">
+                        <span>🎥 New training video uploaded</span>
+                        <span class="time">1 day ago</span>
+                    </div>
+                    <div class="activity-item" data-min-package="silver">
+                        <span>⭐ Added to 2 scout watchlists</span>
+                        <span class="time">3 days ago</span>
+                    </div>
+                    <div class="activity-item" data-min-package="gold">
+                        <span>📧 New message from Team Scout</span>
+                        <span class="time">5 days ago</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Player dashboard specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Player Dashboard initialized');
+            
+            // Update welcome message with user's name if available
+            const userName = localStorage.getItem('userName') || 'Player';
+            document.querySelector('.dashboard-header h1').textContent = `Welcome Back, ${userName}!`;
+        });
+    </script>
+</body>
+</html>
