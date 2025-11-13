@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout Profile - Talanta Scout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/scoutprofile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔍 Scout Portal</h2>
+                <div class="user-info">
+                    <div class="user-avatar">S</div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Scout User</span>
+                        <span class="user-tier" id="userTier">Bronze Tier</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="basic">
+                    <span class="icon">🔍</span>
+                    <span>Player Search</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="bronze">
+                    <span class="icon">⭐</span>
+                    <span>My Watchlist</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">🏆</span>
+                    <span>Team Requests</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="gold">
+                    <span class="icon">📧</span>
+                    <span>Messages</span>
+                </a>
+                <a href="profile.html" class="nav-item active" data-min-package="basic">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="../index.html" class="nav-item logout">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Scout Profile</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary">Edit Profile</button>
+                    <button class="btn-primary" data-min-package="silver">Upgrade Plan</button>
+                </div>
+            </header>
+
+            <!-- Profile Information -->
+            <section class="profile-info">
+                <div class="profile-card">
+                    <div class="profile-avatar-large">S</div>
+                    <div class="profile-details">
+                        <h2 id="scoutName">Scout User</h2>
+                        <p class="profile-role">🔍 Professional Scout</p>
+                        <p class="profile-location">📍 Nairobi, Kenya</p>
+                        <div class="profile-tier-badge">
+                            <span class="tier-label" id="currentTier">Bronze Tier</span>
+                            <span class="tier-status">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Information -->
+            <section class="account-section">
+                <h2>Account Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" value="Scout User" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Email</label>
+                        <input type="email" id="email" value="scout@talanta.com" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" value="+254 700 000 000" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Organization</label>
+                        <input type="text" id="organization" value="Independent Scout" data-min-package="bronze">
+                    </div>
+                    <div class="info-item">
+                        <label>Location</label>
+                        <input type="text" id="location" value="Nairobi, Kenya" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Years of Experience</label>
+                        <input type="number" id="experience" value="5" data-min-package="bronze">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscription Details -->
+            <section class="subscription-section">
+                <h2>Subscription Details</h2>
+                <div class="subscription-card">
+                    <div class="subscription-info">
+                        <h3>Current Plan: <span id="planName">Bronze</span></h3>
+                        <p class="plan-price">KSH 100 / $0.77 per month</p>
+                        <p class="plan-renewal">Next renewal: <span id="renewalDate">January 15, 2025</span></p>
+                        <div class="plan-features">
+                            <h4>Your Plan Includes:</h4>
+                            <ul>
+                                <li>✓ Basic player search</li>
+                                <li>✓ Personal watchlist (up to 10 players)</li>
+                                <li>✓ Basic player profiles</li>
+                                <li>✗ Advanced analytics (Upgrade to Silver)</li>
+                                <li>✗ Direct messaging (Upgrade to Gold)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="subscription-actions">
+                        <button class="btn-primary" data-min-package="basic">Upgrade Plan</button>
+                        <button class="btn-secondary" data-min-package="basic">View All Plans</button>
+                        <button class="btn-danger" data-min-package="basic">Cancel Subscription</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Professional Information -->
+            <section class="professional-section" data-min-package="bronze">
+                <h2>Professional Information</h2>
+                <div class="info-grid">
+                    <div class="info-item full-width">
+                        <label>Areas of Expertise</label>
+                        <textarea id="expertise" rows="3" placeholder="e.g., Defensive players, Youth talent, Kenyan Premier League">Youth talent identification, Defensive specialists</textarea>
+                    </div>
+                    <div class="info-item full-width">
+                        <label>Scouting Regions</label>
+                        <input type="text" id="regions" value="Nairobi, Mombasa, Kisumu">
+                    </div>
+                    <div class="info-item full-width">
+                        <label>Notable Discoveries</label>
+                        <textarea id="discoveries" rows="3" placeholder="Share your success stories">Identified 3 players who joined KPL clubs in 2024</textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Activity Statistics -->
+            <section class="stats-section">
+                <h2>Activity Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" data-min-package="basic">
+                        <div class="stat-value">47</div>
+                        <div class="stat-label">Players Viewed</div>
+                    </div>
+                    <div class="stat-card" data-min-package="bronze">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Watchlist</div>
+                    </div>
+                    <div class="stat-card" data-min-package="silver">
+                        <div class="stat-value">12</div>
+                        <div class="stat-label">Team Inquiries</div>
+                    </div>
+                    <div class="stat-card" data-min-package="gold">
+                        <div class="stat-value">3</div>
+                        <div class="stat-label">Successful Matches</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Settings -->
+            <section class="security-section">
+                <h2>Security Settings</h2>
+                <div class="security-options">
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Change Password</h4>
+                            <p>Update your password to keep your account secure</p>
+                        </div>
+                        <button class="btn-secondary">Change</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Two-Factor Authentication</h4>
+                            <p>Add an extra layer of security to your account</p>
+                        </div>
+                        <button class="btn-secondary" data-min-package="silver">Enable</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Active Sessions</h4>
+                            <p>Manage devices where you're logged in</p>
+                        </div>
+                        <button class="btn-secondary">Manage</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="profile-actions">
+                <button class="btn-primary">Save Changes</button>
+                <button class="btn-secondary">Cancel</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
