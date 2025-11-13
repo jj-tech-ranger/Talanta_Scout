@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coach Profile - Talanta Scout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/coachprofile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🎯 Coach Portal</h2>
+                <div class="user-info">
+                    <div class="user-avatar">C</div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Coach User</span>
+                        <span class="user-tier" id="userTier">Silver Tier</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="basic">
+                    <span class="icon">🎯</span>
+                    <span>My Squad</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="bronze">
+                    <span class="icon">🔍</span>
+                    <span>Find Players</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">📊</span>
+                    <span>Performance Analytics</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">🏆</span>
+                    <span>Training Plans</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="gold">
+                    <span class="icon">📧</span>
+                    <span>Scout Network</span>
+                </a>
+                <a href="profile.html" class="nav-item active" data-min-package="basic">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="../index.html" class="nav-item logout">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Coach Profile</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary">Edit Profile</button>
+                    <button class="btn-primary" data-min-package="gold">Upgrade Plan</button>
+                </div>
+            </header>
+
+            <!-- Profile Information -->
+            <section class="profile-info">
+                <div class="profile-card">
+                    <div class="profile-avatar-large">C</div>
+                    <div class="profile-details">
+                        <h2 id="coachName">Coach User</h2>
+                        <p class="profile-role">🎯 Professional Coach</p>
+                        <p class="profile-location">📍 Nairobi, Kenya</p>
+                        <div class="profile-tier-badge">
+                            <span class="tier-label" id="currentTier">Silver Tier</span>
+                            <span class="tier-status">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Information -->
+            <section class="account-section">
+                <h2>Account Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" value="Coach User" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Email</label>
+                        <input type="email" id="email" value="coach@talanta.com" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" value="+254 700 000 001" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Team/Club</label>
+                        <input type="text" id="team" value="Nairobi FC Academy" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Location</label>
+                        <input type="text" id="location" value="Nairobi, Kenya" data-min-package="basic">
+                    </div>
+                    <div class="info-item">
+                        <label>Coaching License</label>
+                        <input type="text" id="license" value="CAF License B" data-min-package="bronze">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscription Details -->
+            <section class="subscription-section">
+                <h2>Subscription Details</h2>
+                <div class="subscription-card">
+                    <div class="subscription-info">
+                        <h3>Current Plan: <span id="planName">Silver</span></h3>
+                        <p class="plan-price">KSH 500 / $3.85 per month</p>
+                        <p class="plan-renewal">Next renewal: <span id="renewalDate">December 14, 2025</span></p>
+                        <div class="plan-features">
+                            <h4>Your Plan Includes:</h4>
+                            <ul>
+                                <li>✓ Squad management tools</li>
+                                <li>✓ Player discovery and recruitment</li>
+                                <li>✓ Performance analytics dashboard</li>
+                                <li>✓ Training plan templates</li>
+                                <li>✗ Scout network access (Upgrade to Gold)</li>
+                                <li>✗ Video analysis tools (Upgrade to Platinum)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="subscription-actions">
+                        <button class="btn-primary" data-min-package="basic">Upgrade Plan</button>
+                        <button class="btn-secondary" data-min-package="basic">View All Plans</button>
+                        <button class="btn-danger" data-min-package="basic">Cancel Subscription</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Coaching Information -->
+            <section class="professional-section" data-min-package="bronze">
+                <h2>Coaching Information</h2>
+                <div class="info-grid">
+                    <div class="info-item full-width">
+                        <label>Coaching Philosophy</label>
+                        <textarea id="philosophy" rows="3" placeholder="Describe your coaching approach and philosophy">Focus on youth development and tactical discipline</textarea>
+                    </div>
+                    <div class="info-item">
+                        <label>Years of Experience</label>
+                        <input type="number" id="experience" value="8">
+                    </div>
+                    <div class="info-item">
+                        <label>Specialization</label>
+                        <input type="text" id="specialization" value="Youth Development, Strikers">
+                    </div>
+                    <div class="info-item full-width">
+                        <label>Notable Achievements</label>
+                        <textarea id="achievements" rows="3" placeholder="List your coaching achievements">Led U-17 team to regional championship 2023</textarea>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Squad Statistics -->
+            <section class="stats-section">
+                <h2>Squad Statistics</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" data-min-package="basic">
+                        <div class="stat-value">23</div>
+                        <div class="stat-label">Squad Size</div>
+                    </div>
+                    <div class="stat-card" data-min-package="bronze">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Scout Views</div>
+                    </div>
+                    <div class="stat-card" data-min-package="silver">
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Training Hours</div>
+                    </div>
+                    <div class="stat-card" data-min-package="gold">
+                        <div class="stat-value">5</div>
+                        <div class="stat-label">Transfers</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Settings -->
+            <section class="security-section">
+                <h2>Security Settings</h2>
+                <div class="security-options">
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Change Password</h4>
+                            <p>Update your password to keep your account secure</p>
+                        </div>
+                        <button class="btn-secondary">Change</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Two-Factor Authentication</h4>
+                            <p>Add an extra layer of security to your account</p>
+                        </div>
+                        <button class="btn-secondary" data-min-package="silver">Enable</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Active Sessions</h4>
+                            <p>Manage devices where you're logged in</p>
+                        </div>
+                        <button class="btn-secondary">Manage</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="profile-actions">
+                <button class="btn-primary">Save Changes</button>
+                <button class="btn-secondary">Cancel</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
