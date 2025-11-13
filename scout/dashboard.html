@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scout Dashboard - Talanta Scout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/scoutdashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔍 Scout Portal</h2>
+                <div class="user-info">
+                    <div class="user-avatar">S</div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Scout User</span>
+                        <span class="user-tier" id="userTier">Bronze Tier</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item active">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="basic">
+                    <span class="icon">🔍</span>
+                    <span>Player Search</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="bronze">
+                    <span class="icon">⭐</span>
+                    <span>My Watchlist</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">🏆</span>
+                    <span>Team Requests</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="silver">
+                    <span class="icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="gold">
+                    <span class="icon">📧</span>
+                    <span>Messages</span>
+                </a>
+                <a href="profile.html" class="nav-item" data-min-package="basic">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="../index.html" class="nav-item logout">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Scout Dashboard</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary" data-min-package="basic">🔔 Notifications</button>
+                    <button class="btn-primary" data-min-package="bronze">+ Add to Watchlist</button>
+                </div>
+            </header>
+
+            <!-- Stats Grid -->
+            <section class="stats-grid">
+                <div class="stat-card" data-min-package="basic">
+                    <div class="stat-icon">👀</div>
+                    <div class="stat-info">
+                        <h3 id="profilesViewed">0</h3>
+                        <p>Profiles Viewed</p>
+                    </div>
+                </div>
+                <div class="stat-card" data-min-package="bronze">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-info">
+                        <h3 id="watchlistCount">0</h3>
+                        <p>Players in Watchlist</p>
+                    </div>
+                </div>
+                <div class="stat-card" data-min-package="silver">
+                    <div class="stat-icon">🏆</div>
+                    <div class="stat-info">
+                        <h3 id="teamRequests">0</h3>
+                        <p>Team Inquiries</p>
+                    </div>
+                </div>
+                <div class="stat-card" data-min-package="gold">
+                    <div class="stat-icon">🤝</div>
+                    <div class="stat-info">
+                        <h3 id="matchesMade">0</h3>
+                        <p>Successful Matches</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Feature Cards -->
+            <section class="feature-cards">
+                <div class="feature-card" data-min-package="basic">
+                    <h3>🔍 Player Discovery</h3>
+                    <p>Browse and search through our database of talented Kenyan football players.</p>
+                    <button class="btn-primary">Search Players</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="bronze">
+                    <h3>⭐ Personal Watchlist</h3>
+                    <p>Save promising players to your watchlist and track their progress over time.</p>
+                    <button class="btn-primary">View Watchlist</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="silver">
+                    <h3>📈 Advanced Analytics</h3>
+                    <p>Access detailed performance metrics, comparison tools, and trend analysis.</p>
+                    <button class="btn-primary">View Analytics</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="gold">
+                    <h3>🤝 Direct Connections</h3>
+                    <p>Connect directly with players, coaches, and clubs to facilitate transfers.</p>
+                    <button class="btn-primary">View Connections</button>
+                </div>
+                
+                <div class="feature-card" data-min-package="platinum">
+                    <h3>🎯 Priority Access</h3>
+                    <p>Get early access to new player profiles and exclusive scouting opportunities.</p>
+                    <button class="btn-primary">View Opportunities</button>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="actions-grid">
+                    <button class="action-btn" data-min-package="basic">
+                        <span class="icon">🔍</span>
+                        <span>Search Players</span>
+                    </button>
+                    <button class="action-btn" data-min-package="bronze">
+                        <span class="icon">➕</span>
+                        <span>Add to Watchlist</span>
+                    </button>
+                    <button class="action-btn" data-min-package="silver">
+                        <span class="icon">📊</span>
+                        <span>View Reports</span>
+                    </button>
+                    <button class="action-btn" data-min-package="gold">
+                        <span class="icon">✉️</span>
+                        <span>Send Message</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Recent Activity -->
+            <section class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item" data-min-package="basic">
+                        <div class="activity-icon">👁️</div>
+                        <div class="activity-content">
+                            <p><strong>Viewed player profile:</strong> John Mwangi</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item" data-min-package="bronze">
+                        <div class="activity-icon">⭐</div>
+                        <div class="activity-content">
+                            <p><strong>Added to watchlist:</strong> Samuel Omondi</p>
+                            <span class="activity-time">5 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item" data-min-package="silver">
+                        <div class="activity-icon">🏆</div>
+                        <div class="activity-content">
+                            <p><strong>Team inquiry received:</strong> Nairobi FC</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item" data-min-package="gold">
+                        <div class="activity-icon">✉️</div>
+                        <div class="activity-content">
+                            <p><strong>Message sent to:</strong> Coach David Kioko</p>
+                            <span class="activity-time">2 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>  
