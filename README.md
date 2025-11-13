@@ -34,38 +34,6 @@ The platform supports **5 subscription tiers** with ONE HTML file per page:
 
 ---
 
-## 🏗️ Architecture
-
-### **The Magic: `data-min-package` Attributes**
-
-Instead of creating 5 separate HTML files per page (170+ files total), we use **data attributes** to dynamically show/hide features:
-
-```html
-<!-- Available to ALL tiers -->
-<div class="stat-card">
-    <h3>Profile Views</h3>
-    <p>127</p>
-</div>
-
-<!-- Only for Bronze and above -->
-<div class="stat-card" data-min-package="bronze">
-    <h3>Video Views</h3>
-    <p>523</p>
-</div>
-
-<!-- Only for Gold and above -->
-<button class="action-btn" data-min-package="gold">
-    📧 Message Scouts
-</button>
-```
-
-The `main.js` file automatically:
-1. Detects user's package tier from localStorage
-2. Scans all elements with `data-min-package`
-3. Shows/hides elements based on tier access
-4. Adds lock overlay for inaccessible features
-
----
 
 ## 📁 Project Structure
 
@@ -85,40 +53,6 @@ Talanta_Scout/
 
 ---
 
-## 🚀 How It Works
-
-### 1. **User Logs In**
-```javascript
-// login.html stores user data
-localStorage.setItem('userRole', 'player');
-localStorage.setItem('packageTier', 'silver');
-```
-
-### 2. **Dashboard Loads**
-```javascript
-// main.js initializes on page load
-document.addEventListener('DOMContentLoaded', function() {
-    initializePackageFeatures();
-});
-```
-
-### 3. **Features Auto-Filter**
-```javascript
-function initializePackageFeatures() {
-    const currentTier = getCurrentPackageTier();
-    const featureElements = document.querySelectorAll('[data-min-package]');
-    
-    featureElements.forEach(element => {
-        if (!hasPackageAccess(minPackage)) {
-            element.classList.add('feature-locked');
-        }
-    });
-}
-```
-
----
-
-## 🎨 Visual Design Highlights
 
 ### **Dashboard Layout**
 - Dark gradient sidebar with hover animations
@@ -157,19 +91,6 @@ function initializePackageFeatures() {
 
 ---
 
-## 🎯 Benefits Over Original Approach
-
-| Original | New Dynamic Approach |
-|----------|----------------------|
-| 170+ duplicate HTML files | ~30 consolidated files |
-| Separate code for each tier | ONE codebase with data attributes |
-| Hard to maintain | Easy updates |
-| Larger repository | Clean structure |
-| More bugs | Centralized logic |
-
----
-
-## 🔮 Future Enhancements
 
 - [ ] Complete all role dashboards (scout, coach, admin)
 - [ ] Add profile pages for each role
