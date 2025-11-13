@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Profile - Talanta Scout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/adminprofile.css">
+</head>
+<body>
+    <div class="profile-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>⚙️ Admin Portal</h2>
+                <div class="user-info">
+                    <div class="user-avatar">A</div>
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Admin User</span>
+                        <span class="user-tier" id="userTier">Platinum Tier</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="nav-item">
+                    <span class="icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="platinum">
+                    <span class="icon">👥</span>
+                    <span>User Management</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="platinum">
+                    <span class="icon">💳</span>
+                    <span>Subscriptions</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="platinum">
+                    <span class="icon">📊</span>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="platinum">
+                    <span class="icon">⚙️</span>
+                    <span>Platform Settings</span>
+                </a>
+                <a href="#" class="nav-item" data-min-package="platinum">
+                    <span class="icon">📧</span>
+                    <span>Reports</span>
+                </a>
+                <a href="profile.html" class="nav-item active" data-min-package="platinum">
+                    <span class="icon">👤</span>
+                    <span>Profile</span>
+                </a>
+                <a href="../index.html" class="nav-item logout">
+                    <span class="icon">🚪</span>
+                    <span>Logout</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <header class="content-header">
+                <h1>Admin Profile</h1>
+                <div class="header-actions">
+                    <button class="btn-secondary">Edit Profile</button>
+                    <button class="btn-primary" data-min-package="platinum">System Settings</button>
+                </div>
+            </header>
+
+            <!-- Profile Information -->
+            <section class="profile-info">
+                <div class="profile-card">
+                    <div class="profile-avatar-large">A</div>
+                    <div class="profile-details">
+                        <h2 id="adminName">Admin User</h2>
+                        <p class="profile-role">⚙️ Platform Administrator</p>
+                        <p class="profile-location">📍 Nairobi, Kenya</p>
+                        <div class="profile-tier-badge">
+                            <span class="tier-label" id="currentTier">Platinum Tier</span>
+                            <span class="tier-status">Full Access</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Account Information -->
+            <section class="account-section">
+                <h2>Account Information</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" value="Admin User" data-min-package="platinum">
+                    </div>
+                    <div class="info-item">
+                        <label>Email</label>
+                        <input type="email" id="email" value="admin@talanta.com" data-min-package="platinum">
+                    </div>
+                    <div class="info-item">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" value="+254 700 000 099" data-min-package="platinum">
+                    </div>
+                    <div class="info-item">
+                        <label>Department</label>
+                        <input type="text" id="department" value="Platform Administration" data-min-package="platinum">
+                    </div>
+                    <div class="info-item">
+                        <label>Location</label>
+                        <input type="text" id="location" value="Nairobi, Kenya" data-min-package="platinum">
+                    </div>
+                    <div class="info-item">
+                        <label>Access Level</label>
+                        <input type="text" id="accessLevel" value="Full Administrator" data-min-package="platinum" readonly>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Subscription Details -->
+            <section class="subscription-section">
+                <h2>Subscription Details</h2>
+                <div class="subscription-card">
+                    <div class="subscription-info">
+                        <h3>Current Plan: <span id="planName">Platinum</span></h3>
+                        <p class="plan-price">KSH 1,500 / $11.54 per month</p>
+                        <p class="plan-renewal">Next renewal: <span id="renewalDate">December 14, 2025</span></p>
+                        <div class="plan-features">
+                            <h4>Your Plan Includes:</h4>
+                            <ul>
+                                <li>✓ Full platform administration</li>
+                                <li>✓ User management (all roles)</li>
+                                <li>✓ Complete analytics dashboard</li>
+                                <li>✓ Subscription management</li>
+                                <li>✓ System configuration access</li>
+                                <li>✓ Advanced reporting tools</li>
+                                <li>✓ Priority technical support</li>
+                                <li>✓ API access and integrations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="subscription-actions">
+                        <button class="btn-secondary" data-min-package="platinum">View All Plans</button>
+                        <button class="btn-primary" data-min-package="platinum">Billing History</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Admin Privileges -->
+            <section class="professional-section" data-min-package="platinum">
+                <h2>Administrative Privileges</h2>
+                <div class="privileges-grid">
+                    <div class="privilege-item">
+                        <div class="privilege-icon">✅</div>
+                        <div class="privilege-info">
+                            <h4>User Management</h4>
+                            <p>Create, edit, and delete user accounts</p>
+                        </div>
+                    </div>
+                    <div class="privilege-item">
+                        <div class="privilege-icon">✅</div>
+                        <div class="privilege-info">
+                            <h4>Subscription Control</h4>
+                            <p>Manage all subscription tiers and billing</p>
+                        </div>
+                    </div>
+                    <div class="privilege-item">
+                        <div class="privilege-icon">✅</div>
+                        <div class="privilege-info">
+                            <h4>Platform Configuration</h4>
+                            <p>Modify system settings and features</p>
+                        </div>
+                    </div>
+                    <div class="privilege-item">
+                        <div class="privilege-icon">✅</div>
+                        <div class="privilege-info">
+                            <h4>Analytics Access</h4>
+                            <p>View comprehensive platform analytics</p>
+                        </div>
+                    </div>
+                    <div class="privilege-item">
+                        <div class="privilege-icon">✅</div>
+                        <div class="privilege-info">
+                            <h4>Content Moderation</h4>
+                            <p>Review and moderate user-generated content</p>
+                        </div>
+                    </div>
+                    <div class="privilege-item">
+                        <div class="privilege-icon">✅</div>
+                        <div class="privilege-info">
+                            <h4>System Monitoring</h4>
+                            <p>Monitor platform health and performance</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Platform Statistics -->
+            <section class="stats-section">
+                <h2>Platform Overview</h2>
+                <div class="stats-grid">
+                    <div class="stat-card" data-min-package="platinum">
+                        <div class="stat-value">248</div>
+                        <div class="stat-label">Total Users</div>
+                    </div>
+                    <div class="stat-card" data-min-package="platinum">
+                        <div class="stat-value">156</div>
+                        <div class="stat-label">Subscriptions</div>
+                    </div>
+                    <div class="stat-card" data-min-package="platinum">
+                        <div class="stat-value">KSH 78K</div>
+                        <div class="stat-label">Monthly Revenue</div>
+                    </div>
+                    <div class="stat-card" data-min-package="platinum">
+                        <div class="stat-value">98%</div>
+                        <div class="stat-label">System Health</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Security Settings -->
+            <section class="security-section">
+                <h2>Security Settings</h2>
+                <div class="security-options">
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Change Password</h4>
+                            <p>Update your admin password regularly</p>
+                        </div>
+                        <button class="btn-secondary">Change</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Two-Factor Authentication</h4>
+                            <p>Enabled - Using authenticator app</p>
+                        </div>
+                        <button class="btn-secondary" data-min-package="platinum">Configure</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Active Sessions</h4>
+                            <p>3 active sessions across devices</p>
+                        </div>
+                        <button class="btn-secondary">Manage</button>
+                    </div>
+                    <div class="security-item">
+                        <div class="security-info">
+                            <h4>Audit Log</h4>
+                            <p>View your administrative actions</p>
+                        </div>
+                        <button class="btn-secondary" data-min-package="platinum">View Log</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Action Buttons -->
+            <section class="profile-actions">
+                <button class="btn-primary">Save Changes</button>
+                <button class="btn-secondary">Cancel</button>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
