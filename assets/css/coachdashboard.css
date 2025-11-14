@@ -1,0 +1,186 @@
+/* Coach Dashboard Specific Styles */
+/* TalantaScout Platform - Coach Role Customizations */
+
+:root {
+    --coach-primary: #FF6B00;
+    --coach-hover: #E65C00;
+    --coach-light: #FFF3E0;
+    --coach-gradient: linear-gradient(135deg, #FF6B00 0%, #E65C00 100%);
+}
+
+/* Coach Sidebar Customization */
+.sidebar {
+    background: var(--coach-gradient);
+}
+
+.sidebar-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid #fff;
+}
+
+.sidebar-nav a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #fff;
+}
+
+/* Coach Stats Cards */
+.stat-card {
+    border-left: 4px solid var(--coach-primary);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(255, 107, 0, 0.2);
+}
+
+/* Coach Primary Buttons */
+.btn-primary {
+    background: var(--coach-gradient);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--coach-hover);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+}
+
+/* Coach Badges */
+.badge-success {
+    background: var(--coach-primary);
+}
+
+.badge-warning {
+    background: #FFA726;
+}
+
+/* Coach Table Enhancements */
+.data-table thead {
+    background: var(--coach-light);
+}
+
+.data-table tbody tr:hover {
+    background: var(--coach-light);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Coach Page Header */
+.page-header h1 {
+    color: var(--coach-primary);
+}
+
+/* Coach Pagination */
+.pagination button.active {
+    background: var(--coach-primary);
+    border-color: var(--coach-primary);
+}
+
+.pagination button:hover {
+    background: var(--coach-hover);
+    border-color: var(--coach-hover);
+}
+
+/* Coach Filters */
+.filters-section input:focus,
+.filters-section select:focus {
+    border-color: var(--coach-primary);
+    box-shadow: 0 0 0 3px var(--coach-light);
+}
+
+/* Coach Team Cards */
+.team-card {
+    background: linear-gradient(to right, var(--coach-light), #fff);
+    border-left: 3px solid var(--coach-primary);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.team-card:hover {
+    box-shadow: 0 6px 16px rgba(255, 107, 0, 0.15);
+    transform: translateX(5px);
+}
+
+/* Coach Training Plan Cards */
+.training-plan {
+    border: 2px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.training-plan:hover {
+    border-color: var(--coach-primary);
+    background: var(--coach-light);
+}
+
+/* Coach Match Analysis */
+.match-card {
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.match-card:hover {
+    border-color: var(--coach-primary);
+    box-shadow: 0 4px 12px rgba(255, 107, 0, 0.15);
+}
+
+/* Coach Progress Bars */
+.progress-bar {
+    background: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: var(--coach-gradient);
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+/* Coach Loading States */
+.loading-coach {
+    border: 3px solid var(--coach-light);
+    border-top: 3px solid var(--coach-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Coach Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
