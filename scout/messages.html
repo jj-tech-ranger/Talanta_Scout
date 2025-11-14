@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - TalantaScout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/scoutdashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>🎯 TalantaScout</h2>
+                <span class="package-badge current-tier">SILVER</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="dashboard.html">⭐ Dashboard</a>
+                <a href="playersearch.html">🔍 Player Search</a>
+                <a href="watchlist.html">📋 Watchlist</a>
+                <a href="teamrequests.html">📥 Team Requests</a>
+                <a href="messages.html" class="active">✉️ Messages</a>
+                <a href="profile.html">👤 Profile</a>
+            </nav>
+            <a href="../index.html" class="logout-btn">🚪 Logout</a>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Messages</h1>
+                <button class="btn btn-primary" id="newMessageBtn">New Message</button>
+            </header>
+            
+            <!-- Messages Layout -->
+            <div class="messages-container">
+                <!-- Conversations List -->
+                <div class="conversations-list">
+                    <div class="search-box">
+                        <input type="text" id="searchMessages" placeholder="Search conversations...">
+                    </div>
+                    <div id="conversationsList">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+                
+                <!-- Message Thread -->
+                <div class="message-thread">
+                    <div class="thread-header" id="threadHeader">
+                        <h3>Select a conversation</h3>
+                    </div>
+                    <div class="messages-display" id="messagesDisplay">
+                        <p class="no-messages">Select a conversation to view messages</p>
+                    </div>
+                    <div class="message-input" id="messageInput" style="display: none;">
+                        <textarea id="messageText" placeholder="Type your message..."></textarea>
+                        <button class="btn btn-primary" id="sendBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Scout Messages initialized');
+            
+            const conversations = generateConversations();
+            renderConversations(conversations);
+            
+            document.getElementById('newMessageBtn').addEventListener('click', startNewMessage);
+            document.getElementById('sendBtn')?.addEventListener('click', sendMessage);
+        });
+        
+        function generateConversations() {
+            const names = ['Peter Omondi', 'Mary Wanjiku', 'David Kimani', 'Sarah Akinyi', 'Michael Mutua', 'Grace Njeri', 'Daniel Kipchoge', 'Emily Chebet', 'Joseph Kamau', 'Fatuma Ali', 'Collins Otieno', 'Mercy Wambui', 'Kevin Maina', 'Joyce Adhiambo', 'Robert Njoroge', 'Susan Moraa', 'Paul Okoth', 'Brenda Chepkemoi', 'John Doe', 'Jane Smith'];
+            const messageTypes = ['Player', 'Coach', 'Team Manager', 'Agent'];
+            const lastMessages = [
+                'Thanks for your interest!',
+                'When can we meet?',
+                'I sent you the player stats',
+                'Looking forward to hearing from you',
+                'Can we schedule a call?',
+                'Please review the proposal',
+                'Got it, thanks!'
+            ];
+            
+            const convs = [];
+            for (let i = 0; i < 20; i++) {
+                convs.push({
+                    id: i + 1,
+                    name: names[i],
+                    type: messageTypes[i % messageTypes.length],
+                    lastMessage: lastMessages[i % lastMessages.length],
+                    time: `${Math.floor(Math.random() * 24)}h ago`,
+                    unread: i < 5
+                });
+            }
+            return convs;
+        }
+        
+        function renderConversations(conversations) {
+            const list = document.getElementById('conversationsList');
+            list.innerHTML = '';
+            
+            conversations.forEach(conv => {
+                const div = document.createElement('div');
+                div.className = `conversation-item ${conv.unread ? 'unread' : ''}`;
+                div.onclick = () => openConversation(conv);
+                div.innerHTML = `
+                    <div class="conv-avatar">${conv.name.charAt(0)}</div>
+                    <div class="conv-info">
+                        <h4>${conv.name} <span class="conv-type">${conv.type}</span></h4>
+                        <p>${conv.lastMessage}</p>
+                    </div>
+                    <div class="conv-meta">
+                        <span>${conv.time}</span>
+                        ${conv.unread ? '<span class="unread-badge">New</span>' : ''}
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+        
+        function openConversation(conv) {
+            const threadHeader = document.getElementById('threadHeader');
+            threadHeader.innerHTML = `
+                <h3>${conv.name}</h3>
+                <span>${conv.type}</span>
+            `;
+            
+            const messagesDisplay = document.getElementById('messagesDisplay');
+            messagesDisplay.innerHTML = `
+                <div class="message received">
+                    <div class="message-bubble">
+                        <p>Hi, I'm interested in discussing potential opportunities.</p>
+                        <span class="message-time">2 hours ago</span>
+                    </div>
+                </div>
+                <div class="message sent">
+                    <div class="message-bubble">
+                        <p>${conv.lastMessage}</p>
+                        <span class="message-time">1 hour ago</span>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('messageInput').style.display = 'flex';
+            
+            // Mark as read
+            document.querySelectorAll('.conversation-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+            event.currentTarget.classList.remove('unread');
+        }
+        
+        function startNewMessage() {
+            alert('New message composition form will open');
+        }
+        
+        function sendMessage() {
+            const messageText = document.getElementById('messageText').value;
+            if (!messageText.trim()) {
+                alert('Please enter a message');
+                return;
+            }
+            
+            const messagesDisplay = document.getElementById('messagesDisplay');
+            const newMessage = document.createElement('div');
+            newMessage.className = 'message sent';
+            newMessage.innerHTML = `
+                <div class="message-bubble">
+                    <p>${messageText}</p>
+                    <span class="message-time">Just now</span>
+                </div>
+            `;
+            messagesDisplay.appendChild(newMessage);
+            document.getElementById('messageText').value = '';
+            messagesDisplay.scrollTop = messagesDisplay.scrollHeight;
+        }
+    </script>
+    
+    <style>
+        .messages-container {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 20px;
+            height: calc(100vh - 200px);
+        }
+        
+        .conversations-list {
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            overflow-y: auto;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-bottom: 1px solid #2a2a2a;
+            background: #1a1a1a;
+            color: white;
+        }
+        
+        .conversation-item {
+            display: grid;
+            grid-template-columns: 50px 1fr auto;
+            gap: 10px;
+            padding: 15px;
+            border-bottom: 1px solid #2a2a2a;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .conversation-item:hover, .conversation-item.active {
+            background: #2a2a2a;
+        }
+        
+        .conversation-item.unread {
+            background: #1f3a1f;
+        }
+        
+        .conv-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #00B140, #33C265);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .conv-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 14px;
+        }
+        
+        .conv-type {
+            font-size: 11px;
+            color: #888;
+            font-weight: normal;
+        }
+        
+        .conv-info p {
+            margin: 0;
+            font-size: 13px;
+            color: #aaa;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .conv-meta {
+            text-align: right;
+            font-size: 11px;
+            color: #888;
+        }
+        
+        .unread-badge {
+            display: block;
+            background: #00B140;
+            color: white;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 10px;
+            margin-top: 5px;
+        }
+        
+        .message-thread {
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .thread-header {
+            padding: 15px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+        
+        .messages-display {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        .no-messages {
+            text-align: center;
+            color: #888;
+            margin-top: 50px;
+        }
+        
+        .message {
+            display: flex;
+            margin-bottom: 15px;
+        }
+        
+        .message.sent {
+            justify-content: flex-end;
+        }
+        
+        .message-bubble {
+            max-width: 70%;
+            padding: 10px 15px;
+            border-radius: 12px;
+        }
+        
+        .message.received .message-bubble {
+            background: #2a2a2a;
+        }
+        
+        .message.sent .message-bubble {
+            background: linear-gradient(135deg, #00B140, #33C265);
+        }
+        
+        .message-time {
+            display: block;
+            font-size: 10px;
+            margin-top: 5px;
+            opacity: 0.7;
+        }
+        
+        .message-input {
+            padding: 15px;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .message-input textarea {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: white;
+            resize: none;
+            min-height: 50px;
+        }
+    </style>
+</body>
+</html>
