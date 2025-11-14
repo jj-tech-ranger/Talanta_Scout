@@ -1,0 +1,211 @@
+/* Admin Dashboard Specific Styles */
+/* TalantaScout Platform - Admin Role Customizations */
+
+:root {
+    --admin-primary: #2196F3;
+    --admin-hover: #1976D2;
+    --admin-light: #E3F2FD;
+    --admin-gradient: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+    --admin-danger: #F44336;
+    --admin-warning: #FF9800;
+}
+
+/* Admin Sidebar Customization */
+.sidebar {
+    background: var(--admin-gradient);
+}
+
+.sidebar-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid #fff;
+}
+
+.sidebar-nav a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #fff;
+}
+
+/* Admin Stats Cards */
+.stat-card {
+    border-left: 4px solid var(--admin-primary);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(33, 150, 243, 0.2);
+}
+
+/* Admin Primary Buttons */
+.btn-primary {
+    background: var(--admin-gradient);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--admin-hover);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+}
+
+/* Admin Badges */
+.badge-success {
+    background: #4CAF50;
+}
+
+.badge-danger {
+    background: var(--admin-danger);
+}
+
+.badge-warning {
+    background: var(--admin-warning);
+}
+
+.badge-info {
+    background: var(--admin-primary);
+}
+
+/* Admin Table Enhancements */
+.data-table thead {
+    background: var(--admin-light);
+}
+
+.data-table tbody tr:hover {
+    background: var(--admin-light);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Admin Page Header */
+.page-header h1 {
+    color: var(--admin-primary);
+}
+
+/* Admin Pagination */
+.pagination button.active {
+    background: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.pagination button:hover {
+    background: var(--admin-hover);
+    border-color: var(--admin-hover);
+}
+
+/* Admin Filters */
+.filters-section input:focus,
+.filters-section select:focus {
+    border-color: var(--admin-primary);
+    box-shadow: 0 0 0 3px var(--admin-light);
+}
+
+/* Admin Analytics Cards */
+.analytics-card {
+    background: linear-gradient(to right, var(--admin-light), #fff);
+    border-left: 3px solid var(--admin-primary);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.analytics-card:hover {
+    box-shadow: 0 6px 16px rgba(33, 150, 243, 0.15);
+    transform: translateX(5px);
+}
+
+/* Admin System Settings */
+.setting-item {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.setting-item:hover {
+    border-color: var(--admin-primary);
+    background: var(--admin-light);
+}
+
+/* Admin Alert Messages */
+.alert-admin {
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+}
+
+.alert-info {
+    background: var(--admin-light);
+    color: var(--admin-primary);
+    border-left: 4px solid var(--admin-primary);
+}
+
+.alert-danger {
+    background: #FFEBEE;
+    color: var(--admin-danger);
+    border-left: 4px solid var(--admin-danger);
+}
+
+/* Admin Dashboard Grid */
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Admin Action Buttons */
+.btn-admin-danger {
+    background: var(--admin-danger);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-admin-danger:hover {
+    background: #D32F2F;
+    transform: scale(1.05);
+}
+
+/* Admin Loading States */
+.loading-admin {
+    border: 3px solid var(--admin-light);
+    border-top: 3px solid var(--admin-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Admin Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .stats-grid,
+    .admin-grid {
+        grid-template-columns: 1fr;
+    }
+}
