@@ -1,0 +1,170 @@
+/* Scout Dashboard Specific Styles */
+/* TalantaScout Platform - Scout Role Customizations */
+
+:root {
+    --scout-primary: #00B140;
+    --scout-hover: #009933;
+    --scout-light: #E8F5E9;
+    --scout-gradient: linear-gradient(135deg, #00B140 0%, #009933 100%);
+}
+
+/* Scout Sidebar Customization */
+.sidebar {
+    background: var(--scout-gradient);
+}
+
+.sidebar-header {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar-nav a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-left: 4px solid #fff;
+}
+
+.sidebar-nav a.active {
+    background: rgba(255, 255, 255, 0.25);
+    border-left: 4px solid #fff;
+}
+
+/* Scout Stats Cards */
+.stat-card {
+    border-left: 4px solid var(--scout-primary);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 177, 64, 0.2);
+}
+
+/* Scout Primary Buttons */
+.btn-primary {
+    background: var(--scout-gradient);
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: var(--scout-hover);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 177, 64, 0.3);
+}
+
+/* Scout Badges */
+.badge-success {
+    background: var(--scout-primary);
+}
+
+/* Scout Table Enhancements */
+.data-table thead {
+    background: var(--scout-light);
+}
+
+.data-table tbody tr:hover {
+    background: var(--scout-light);
+    transform: scale(1.01);
+    transition: all 0.2s ease;
+}
+
+/* Scout Page Header */
+.page-header h1 {
+    color: var(--scout-primary);
+}
+
+/* Scout Pagination */
+.pagination button.active {
+    background: var(--scout-primary);
+    border-color: var(--scout-primary);
+}
+
+.pagination button:hover {
+    background: var(--scout-hover);
+    border-color: var(--scout-hover);
+}
+
+/* Scout Filters */
+.filters-section input:focus,
+.filters-section select:focus {
+    border-color: var(--scout-primary);
+    box-shadow: 0 0 0 3px var(--scout-light);
+}
+
+/* Scout Specific Cards */
+.watchlist-card {
+    background: linear-gradient(to right, var(--scout-light), #fff);
+    border-left: 3px solid var(--scout-primary);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.watchlist-card:hover {
+    box-shadow: 0 6px 16px rgba(0, 177, 64, 0.15);
+    transform: translateX(5px);
+}
+
+/* Scout Search Results */
+.search-result-item {
+    border: 1px solid #e0e0e0;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+.search-result-item:hover {
+    border-color: var(--scout-primary);
+    background: var(--scout-light);
+}
+
+/* Scout Icons */
+.icon {
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+/* Scout Tooltips */
+.tooltip-scout {
+    background: var(--scout-primary);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+/* Scout Loading States */
+.loading-scout {
+    border: 3px solid var(--scout-light);
+    border-top: 3px solid var(--scout-primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Scout Mobile Responsiveness */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+    
+    .main-content {
+        margin-left: 0;
+        padding: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
