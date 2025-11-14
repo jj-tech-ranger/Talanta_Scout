@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Watchlist - TalantaScout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/scoutdashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>🎯 TalantaScout</h2>
+                <span class="package-badge current-tier">SILVER</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="dashboard.html">⭐ Dashboard</a>
+                <a href="playersearch.html">🔍 Player Search</a>
+                <a href="watchlist.html" class="active">📋 Watchlist</a>
+                <a href="teamrequests.html">📥 Team Requests</a>
+                <a href="messages.html">✉️ Messages</a>
+                <a href="profile.html">👤 Profile</a>
+            </nav>
+            <a href="../index.html" class="logout-btn">🚪 Logout</a>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>My Watchlist</h1>
+                <div class="header-actions">
+                    <button class="btn btn-secondary" id="exportBtn" data-min-package="gold">Export Watchlist</button>
+                    <button class="btn btn-primary" id="addPlayerBtn">Add Player Manually</button>
+                </div>
+            </header>
+            
+            <!-- Watchlist Stats -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Players</h3>
+                    <p class="stat-value" id="totalPlayers">20</p>
+                    <span class="stat-label">In Watchlist</span>
+                </div>
+                
+                <div class="stat-card" data-min-package="bronze">
+                    <h3>By Position</h3>
+                    <p class="stat-value">5F / 7M / 6D / 2G</p>
+                    <span class="stat-label">Distribution</span>
+                </div>
+                
+                <div class="stat-card" data-min-package="silver">
+                    <h3>Avg Rating</h3>
+                    <p class="stat-value">8.2</p>
+                    <span class="stat-label">Overall Average</span>
+                </div>
+                
+                <div class="stat-card" data-min-package="gold">
+                    <h3>Top Prospect</h3>
+                    <p class="stat-value">Peter Omondi</p>
+                    <span class="stat-label">9.5 Rating</span>
+                </div>
+            </section>
+            
+            <!-- Filter Options -->
+            <section class="filter-section">
+                <h2>Filter Watchlist</h2>
+                <div class="filters-grid">
+                    <select id="positionFilter">
+                        <option value="">All Positions</option>
+                        <option value="forward">Forward</option>
+                        <option value="midfielder">Midfielder</option>
+                        <option value="defender">Defender</option>
+                        <option value="goalkeeper">Goalkeeper</option>
+                    </select>
+                    
+                    <select id="ratingFilter" data-min-package="bronze">
+                        <option value="">All Ratings</option>
+                        <option value="9+">9.0+</option>
+                        <option value="8+">8.0+</option>
+                        <option value="7+">7.0+</option>
+                    </select>
+                    
+                    <input type="text" id="searchPlayer" placeholder="Search by name..." data-min-package="silver">
+                </div>
+            </section>
+            
+            <!-- Watchlist Table -->
+            <section class="watchlist-section">
+                <h2>Players <span id="watchlistCount">(20 players)</span></h2>
+                <div class="table-container">
+                    <table id="watchlistTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Age</th>
+                                <th>Team</th>
+                                <th>Rating</th>
+                                <th>Date Added</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="watchlistTableBody">
+                            <!-- Data populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination generated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Scout Watchlist initialized');
+            
+            const players = generateWatchlistData();
+            renderWatchlist(players, 1);
+            
+            // Filter functionality
+            document.getElementById('positionFilter').addEventListener('change', filterWatchlist);
+            document.getElementById('exportBtn')?.addEventListener('click', exportWatchlist);
+            document.getElementById('addPlayerBtn').addEventListener('click', addPlayerManually);
+        });
+        
+        function generateWatchlistData() {
+            const names = ['John Doe', 'Jane Smith', 'Peter Omondi', 'Mary Wanjiku', 'David Kimani', 'Sarah Akinyi', 'Michael Mutua', 'Grace Njeri', 'Daniel Kipchoge', 'Emily Chebet', 'Joseph Kamau', 'Fatuma Ali', 'Collins Otieno', 'Mercy Wambui', 'Kevin Maina', 'Joyce Adhiambo', 'Robert Njoroge', 'Susan Moraa', 'Paul Okoth', 'Brenda Chepkemoi'];
+            const positions = ['Forward', 'Midfielder', 'Defender', 'Goalkeeper'];
+            const teams = ['Gor Mahia', 'AFC Leopards', 'Tusker FC', 'Bandari FC', 'KCB FC'];
+            
+            const players = [];
+            for (let i = 0; i < 20; i++) {
+                players.push({
+                    id: i + 1,
+                    name: names[i],
+                    position: positions[i % positions.length],
+                    age: 18 + (i % 10),
+                    team: teams[i % teams.length],
+                    rating: (7.0 + Math.random() * 3).toFixed(1),
+                    dateAdded: new Date(2025, 9, Math.floor(Math.random() * 30) + 1).toLocaleDateString()
+                });
+            }
+            return players;
+        }
+        
+        function renderWatchlist(players, page = 1) {
+            const perPage = 5;
+            const start = (page - 1) * perPage;
+            const end = start + perPage;
+            const paginatedPlayers = players.slice(start, end);
+            
+            const tbody = document.getElementById('watchlistTableBody');
+            tbody.innerHTML = '';
+            
+            paginatedPlayers.forEach(player => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${player.name}</td>
+                    <td>${player.position}</td>
+                    <td>${player.age}</td>
+                    <td>${player.team}</td>
+                    <td><span class="rating-badge">${player.rating}</span></td>
+                    <td>${player.dateAdded}</td>
+                    <td>
+                        <button class="btn-action" onclick="viewPlayerDetails(${player.id})">View</button>
+                        <button class="btn-action btn-danger" onclick="removeFromWatchlist(${player.id})">Remove</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            renderPagination(players.length, page, perPage);
+        }
+        
+        function renderPagination(totalItems, currentPage, perPage) {
+            const totalPages = Math.ceil(totalItems / perPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                btn.className = i === currentPage ? 'page-btn active' : 'page-btn';
+                btn.onclick = () => renderWatchlist(generateWatchlistData(), i);
+                pagination.appendChild(btn);
+            }
+        }
+        
+        function filterWatchlist() {
+            console.log('Filtering watchlist...');
+            alert('Filter functionality will be implemented with backend');
+        }
+        
+        function viewPlayerDetails(playerId) {
+            console.log('Viewing player:', playerId);
+            alert(`Player details will open in a modal or new page`);
+        }
+        
+        function removeFromWatchlist(playerId) {
+            if (confirm('Remove this player from your watchlist?')) {
+                console.log('Removing player:', playerId);
+                alert('Player removed from watchlist!');
+                location.reload();
+            }
+        }
+        
+        function exportWatchlist() {
+            console.log('Exporting watchlist...');
+            alert('Export functionality will generate CSV/PDF');
+        }
+        
+        function addPlayerManually() {
+            console.log('Add player manually');
+            alert('Manual add form will open');
+        }
+    </script>
+</body>
+</html>
