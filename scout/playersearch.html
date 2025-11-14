@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Search - TalantaScout</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../assets/css/scoutdashboard.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>🎯 TalantaScout</h2>
+                <span class="package-badge current-tier">SILVER</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="dashboard.html">⭐ Dashboard</a>
+                <a href="playersearch.html" class="active">🔍 Player Search</a>
+                <a href="watchlist.html">📋 Watchlist</a>
+                <a href="teamrequests.html">📥 Team Requests</a>
+                <a href="messages.html">✉️ Messages</a>
+                <a href="profile.html">👤 Profile</a>
+            </nav>
+            <a href="../index.html" class="logout-btn">🚪 Logout</a>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>Player Search</h1>
+                <button class="btn btn-primary" data-min-package="gold">Advanced Filters</button>
+            </header>
+            
+            <!-- Search Filters -->
+            <section class="search-filters">
+                <h2>Search Filters</h2>
+                <div class="filters-grid">
+                    <div class="filter-group">
+                        <label for="position">Position</label>
+                        <select id="position">
+                            <option value="">All Positions</option>
+                            <option value="forward">Forward</option>
+                            <option value="midfielder">Midfielder</option>
+                            <option value="defender">Defender</option>
+                            <option value="goalkeeper">Goalkeeper</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="ageRange">Age Range</label>
+                        <select id="ageRange">
+                            <option value="">All Ages</option>
+                            <option value="16-18">16-18</option>
+                            <option value="19-21">19-21</option>
+                            <option value="22-25">22-25</option>
+                            <option value="26+">26+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="location">Location</label>
+                        <select id="location">
+                            <option value="">All Locations</option>
+                            <option value="nairobi">Nairobi</option>
+                            <option value="mombasa">Mombasa</option>
+                            <option value="kisumu">Kisumu</option>
+                            <option value="nakuru">Nakuru</option>
+                            <option value="eldoret">Eldoret</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group" data-min-package="bronze">
+                        <label for="skillLevel">Skill Level</label>
+                        <select id="skillLevel">
+                            <option value="">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                            <option value="professional">Professional</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group" data-min-package="silver">
+                        <label for="videoAvailable">Video Available</label>
+                        <input type="checkbox" id="videoAvailable">
+                    </div>
+                </div>
+                <button class="btn btn-primary" id="searchBtn">Search Players</button>
+            </section>
+            
+            <!-- Search Results -->
+            <section class="search-results">
+                <h2>Search Results <span id="resultCount">(20 players)</span></h2>
+                <div class="table-container">
+                    <table id="playersTable">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Position</th>
+                                <th>Age</th>
+                                <th>Team</th>
+                                <th>Rating</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="playersTableBody">
+                            <!-- Data will be populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Pagination -->
+                <div class="pagination" id="pagination">
+                    <!-- Pagination will be generated by JavaScript -->
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Scout player search specific functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Scout Player Search initialized');
+            
+            // Sample player data
+            const players = generateSamplePlayers();
+            
+            // Initial render
+            renderPlayers(players, 1);
+            
+            // Search functionality
+            document.getElementById('searchBtn').addEventListener('click', function() {
+                filterPlayers();
+            });
+        });
+        
+        function generateSamplePlayers() {
+            const names = ['John Doe', 'Jane Smith', 'Peter Omondi', 'Mary Wanjiku', 'David Kimani', 'Sarah Akinyi', 'Michael Mutua', 'Grace Njeri', 'Daniel Kipchoge', 'Emily Chebet', 'Joseph Kamau', 'Fatuma Ali', 'Collins Otieno', 'Mercy Wambui', 'Kevin Maina', 'Joyce Adhiambo', 'Robert Njoroge', 'Susan Moraa', 'Paul Okoth', 'Brenda Chepkemoi'];
+            const positions = ['Forward', 'Midfielder', 'Defender', 'Goalkeeper'];
+            const teams = ['Gor Mahia', 'AFC Leopards', 'Tusker FC', 'Bandari FC', 'KCB FC', 'Ulinzi Stars', 'Mathare United', 'Sofapaka FC'];
+            
+            const players = [];
+            for (let i = 0; i < 20; i++) {
+                players.push({
+                    id: i + 1,
+                    name: names[i],
+                    position: positions[i % positions.length],
+                    age: 18 + (i % 10),
+                    team: teams[i % teams.length],
+                    rating: (7.0 + Math.random() * 3).toFixed(1)
+                });
+            }
+            return players;
+        }
+        
+        function renderPlayers(players, page = 1) {
+            const perPage = 5;
+            const start = (page - 1) * perPage;
+            const end = start + perPage;
+            const paginatedPlayers = players.slice(start, end);
+            
+            const tbody = document.getElementById('playersTableBody');
+            tbody.innerHTML = '';
+            
+            paginatedPlayers.forEach(player => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${player.name}</td>
+                    <td>${player.position}</td>
+                    <td>${player.age}</td>
+                    <td>${player.team}</td>
+                    <td><span class="rating-badge">${player.rating}</span></td>
+                    <td>
+                        <button class="btn-action" onclick="viewProfile(${player.id})">View</button>
+                        <button class="btn-action" onclick="addToWatchlist(${player.id})">Add to Watchlist</button>
+                    </td>
+                `;
+                tbody.appendChild(row);
+            });
+            
+            renderPagination(players.length, page, perPage);
+        }
+        
+        function renderPagination(totalItems, currentPage, perPage) {
+            const totalPages = Math.ceil(totalItems / perPage);
+            const pagination = document.getElementById('pagination');
+            pagination.innerHTML = '';
+            
+            for (let i = 1; i <= totalPages; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                btn.className = i === currentPage ? 'page-btn active' : 'page-btn';
+                btn.onclick = () => renderPlayers(generateSamplePlayers(), i);
+                pagination.appendChild(btn);
+            }
+        }
+        
+        function filterPlayers() {
+            console.log('Filtering players...');
+            // Filter logic would go here
+            alert('Filter functionality will be implemented with backend integration');
+        }
+        
+        function viewProfile(playerId) {
+            console.log('Viewing player profile:', playerId);
+            alert('Player profile view will be implemented');
+        }
+        
+        function addToWatchlist(playerId) {
+            console.log('Adding player to watchlist:', playerId);
+            alert('Player added to watchlist!');
+        }
+    </script>
+</body>
+</html>
